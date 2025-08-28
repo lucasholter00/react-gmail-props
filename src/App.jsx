@@ -5,6 +5,7 @@ import EmailList from './components/EmailList'
 import initialEmails from './data/emails'
 
 import './styles/App.css'
+import Content from './components/Content'
 
 const getReadEmails = emails => emails.filter(email => !email.read)
 
@@ -88,12 +89,7 @@ function App() {
       </nav>
       <main className="emails">
         { selectedIndex >= 0 && filteredEmails[selectedIndex] ?(
-          <>
-            <h2> { filteredEmails[selectedIndex].title }</h2>
-            <p> Sender: { filteredEmails[selectedIndex].sender }</p>
-            <p>-----------------------------------------------</p>
-            <p> { filteredEmails[selectedIndex].content }</p>
-          </>
+          <Content email={ filteredEmails[selectedIndex] } setSelectedIndex={ setSelectedIndex }/>
         ) : (
           <EmailList filteredEmails={filteredEmails} setEmails={setEmails} setSelectedIndex={setSelectedIndex}></EmailList>
           )
